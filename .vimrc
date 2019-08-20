@@ -128,3 +128,7 @@ highlight StatusLine term=bold,reverse cterm=bold,reverse
 set ai
 set nu
 
+"Plugin 'Yggdroot/indentLine'
+let g:indentLine_char = '┊'
+let g:indentLine_color_term = 000
+"let g:indentLine_setColors = 0
