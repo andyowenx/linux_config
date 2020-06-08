@@ -1,6 +1,11 @@
 syntax on
 set softtabstop=4
 set shiftwidth=4
+set expandtab           " enter spaces when tab is pressed
+set tabstop=4           " use 4 spaces to represent tab
+set autoindent
+
+
 " folding
 au BufWinEnter *.c,*.cpp,*.php,*.py,*.pl silent loadview
 au BufWinLeave *.c,*.cpp,*.php,*.py,*.pl mkview
@@ -105,15 +110,15 @@ set ruler         " display current line number
 "    \ endif
 "endif
 
-function InsertTabWrapper()
-	let col = col('.') - 1
-	if !col || getline('.')[col - 1] !~ '\k'
-	return "\<tab>"
-	else
-	return "\<c-p>"
-	endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+"function InsertTabWrapper()
+"	let col = col('.') - 1
+"	if !col || getline('.')[col - 1] !~ '\k'
+"	return "\<tab>"
+"	else
+"	return "\<c-p>"
+"	endif
+"endfunction
+"inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 map  <F9>  :make<CR>  :copen<CR>  <C-W>10_
 
 let Ws_WinWidth = 30
@@ -125,10 +130,22 @@ set ls=2
 set statusline=%<%F\ %m%=\ %h%r\ %-19([%p%%]\ %3l,%02c%03V%)%y
 highlight StatusLine term=bold,reverse cterm=bold,reverse
 
-set ai
+"set ai
 set nu
 
 "Plugin 'Yggdroot/indentLine'
-let g:indentLine_char = '┊'
-let g:indentLine_color_term = 000
+"let g:indentLine_char = '┊'
+"let g:indentLine_color_term = 000
 "let g:indentLine_setColors = 0
+
+"=================================================================================================
+"https://stackoverflow.com/questions/65076/how-do-i-set-up-vim-autoindentation-properly-for-editing-python-files
+
+" --------------------------------------------------------------------------------
+" configure editor with tabs and nice stuff...
+" --------------------------------------------------------------------------------
+" make backspaces more powerfull
+set backspace=indent,eol,start
+
+"=================================================================================================
+
